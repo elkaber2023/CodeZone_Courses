@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const { default: isEmail } = require("validator/lib/isemail");
+// const { default: isEmail } = require("validator/lib/isemail");
+const validator = require('validator');
 const userRoles = require("../utils/userRoles");
 
 const userSchema = new mongoose.Schema({
@@ -15,7 +16,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    validate: [isEmail, "Field Must Be A Valid Email X => X"],
+    validate: [validator.default.isEmail, "Field Must Be A Valid Email X => X"],
   },
   password: {
     type: String,
